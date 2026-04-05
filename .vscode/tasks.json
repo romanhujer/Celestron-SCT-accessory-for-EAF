@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Render OpenSCAD to STL",
+      "type": "shell",
+      "command": "/Applications/OpenSCAD-2021.01.app/Contents/MacOS/OpenSCAD",
+      "args": [
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.stl",
+        "${file}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+{
+  "label": "OpenSCAD Fast Preview",
+  "type": "shell",
+  "command": "/Applications/OpenSCAD-2021.01.app/Contents/MacOS/OpenSCAD",
+  "args": ["${file}"],
+  "group": "none",
+  "problemMatcher": []
+}
+  ]
+}
+

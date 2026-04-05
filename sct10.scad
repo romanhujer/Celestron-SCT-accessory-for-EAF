@@ -20,9 +20,9 @@
 
 */
 
-include <EAFx.scad>; 
+#include <EAFx.scad>; 
 
-include <asiair.scad>; 
+#include <asiair.scad>; 
 include <Gear_GT2.scad>; 
 include <parametric-spur-gear.scad>
 include <threads.scad>
@@ -30,16 +30,17 @@ include <Pulley_GT2_43.scad>
 include <Pulley_GT2_20.scad>
 
 EAF=0;
+EAF_Hn=1;
 EAF_H=0;
 SCT=0;
 SCT2=0;
 SCT3=0;
 TEST=0;
 KNOB=0;
-KNOB2=1;
+KNOB2=0;
 
 module arcaplate(L){
-    difference(){
+    difference() {
         translate([0,-38/2,0])cube([L,38,10]);
         translate([-.01,32/2,5])rotate([-45,0,0])cube([L+.02,10,10]);
         translate([-.01,-32/2,5])rotate([135,0,0])cube([L+.02,10,10]);
@@ -253,6 +254,57 @@ difference() {
 }    
 
 
+module EAF_HolderN() {
+difference() {                
+   union() { 
+
+      translate([-25,-25, -10] ) cube([50,12.5 ,30]);    
+      translate([-15,-25, -60] ) cube([30,12.5 ,90]);    
+
+       translate([-25,-96,7 ]) cube([ 50, 73, 13]); 
+/*    difference() {            
+        union() {
+            translate([-25,-23, 7 ]) cylinder(h=13, r=13, center=false, $fn=360);
+            translate([ 25,-23, 7 ]) cylinder(h=13, r=13, center=false, $fn=360);
+        }   
+        union() {  
+            translate([ 25,-36, 7 ]) cube([ 13, 26, 13]); 
+            translate([-38,-36, 7 ]) cube([ 13, 26, 13]); 
+        }
+    }
+*/  
+   } 
+   union () {
+       translate([-25,  -102,7 ]) cube([ 4.5, 77, 13]); 
+       translate([ 20.5,-102,7 ]) cube([ 4.5, 77, 13]); 
+       
+       translate([-30,-64, 14 ]) rotate ([0,90,0]) cylinder(h=60, r=2, center=false, $fn=360);   //Sroub
+       
+       translate([-36.5,-64, 14 ]) rotate ([0,90,0]) M4_imbus_B();
+       translate([36.5,-64, 14 ]) rotate ([0,0,180]) rotate ([0,90,0]) M4_imbus_B();
+       
+       translate([0,-57, 7 ]) cylinder(h=13, r=12, center=false, $fn=360);  
+       translate([ -12,-57.5, 7 ]) cube([ 24, 49, 13]); 
+       
+       translate([ -12.7,-90.5, 7 ]) cube([ 7.4, 18, 5]); 
+       translate([   5.3,-90.5, 7 ]) cube([ 7.4, 18, 5]); 
+       
+       
+       translate([  9,-72.5, 7 ]) cylinder(h=5, r=3.7, center=false, $fn=360);  
+       translate([  9,-90.5, 7 ]) cylinder(h=5, r=3.7, center=false, $fn=360);  
+       translate([ -9,-72.5, 7 ]) cylinder(h=5, r=3.7, center=false, $fn=360);  
+       translate([ -9,-90.5, 7 ]) cylinder(h=5, r=3.7, center=false, $fn=360);  
+       
+       translate([ -25,-10, -10 ]) rotate ([90,0,0]) cylinder(h=15, r=10, center=false, $fn=100);
+       translate([ 25,-10, -10 ]) rotate ([90,0,0]) cylinder(h=15, r=10, center=false, $fn=100);  
+       
+       translate([ 0,-25, 7-20.5 ]) rotate ([-90,0,0])M4_imbus(); 
+       translate([ 0,-25, 7-52 ]) rotate ([-90,0,0])M4_imbus(); 
+         
+   }    
+  } 
+}    
+
 
 
 
@@ -292,6 +344,20 @@ union()
 
 }
 
+
+
+
+
+if ( EAF_Hn  == 1  ) {
+
+    
+
+union()    
+{         
+  EAF_HolderN();     
+  
+}
+}
 
 
 if ( SCT  == 1  ) {
@@ -446,3 +512,6 @@ if ( KNOB2  == 1  ) {
 }
 
 }
+
+
+ EAF_HolderN(); 
