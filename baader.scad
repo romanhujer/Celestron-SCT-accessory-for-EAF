@@ -6,17 +6,17 @@ $fn = 360; // Vyhlazení kruhů
 
 /* [Hlavní rozměry clony] */
 // Vnější průměr sluneční clony objektivu (mm)
-hood_diameter = 120.0; 
+hood_diameter = 52.0; 
 // Vůle pro snadné nasazení (mm)
-hood_tolerance = 0.35;  
+hood_tolerance = 0.5;  
 // Výška celého těla (mm)
-total_height = 25.0; 
+total_height = 15.0; 
 // Hloubka pro nasunutí clony (mm)
-hood_engagement = 22.5; 
+hood_engagement = 12.5; 
 
 /* [Rozměry filtru a kroužku] */
 // Světelný průměr / optické okno filtru (mm)
-aperture_diameter = 110.0; 
+aperture_diameter = 42.0; 
 // Tloušťka stěny hlavního tubusu (mm)
 wall_thickness = 3.5; 
 // Výška jistícího kroužku (mm)
@@ -24,10 +24,10 @@ ring_thickness = 4.0;
 
 /* [Spojovací materiál (M3)] */
 screw_hole_ring = 2.5; 
-screw_hole_body = 3.2; 
+screw_hole_body = 3.2;                                                     
 
 /* [Zobrazení] */
-render_mode = "body"; // [both, body, ring]
+render_mode = "both"; // [both, body, ring]
 
 // --- Výpočty průměrů ---
 inner_body_dia = hood_diameter + hood_tolerance;
